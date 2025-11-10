@@ -32,3 +32,5 @@ echo "https://sqs.us-east-1.amazonaws.com"; openssl s_client -connect sqs.us-eas
 echo "https://aws.amazon.com/s3"; openssl s_client -connect aws.amazon.com:443 -servername aws.amazon.com </dev/null 2>/dev/null | openssl x509 -noout -issuer | grep "CN=" || echo "Failed to retrieve certificate"
 
 echo "https://stg01-euwest2.accessiq.sailpoint.com"; openssl s_client -connect stg01-euwest2.accessiq.sailpoint.com:443 -servername stg01-euwest2.accessiq.sailpoint.com </dev/null 2>/dev/null | openssl x509 -noout -issuer | grep "CN=" || echo "Failed to retrieve certificate"
+
+echo "https://va-activation-global.secure-api.infra.identitynow.com"; openssl s_client -connect va-activation-global.secure-api.infra.identitynow.com:443 -servername va-activation-global.secure-api.infra.identitynow.com </dev/null 2>/dev/null | openssl x509 -noout -issuer | grep "CN=" || echo "Failed to retrieve certificate"
