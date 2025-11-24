@@ -1,3 +1,6 @@
+**Access**
+Local login: https://<tenantid>.identitynow.com/login/login?prompt=true
+
 **Troubleshooting**
 https://developer.sailpoint.com/discuss/t/stunt-script-va-support-script/18337
 
