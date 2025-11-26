@@ -1,0 +1,50 @@
+Source: SailPoint
+
+You can export rules from your Identity Security Cloud tenant using either the SailPoint CLI or the SP-Config API.
+
+***Option 1: Using the SailPoint CLI
+**Step 1: Export Rules
+Run the export command to initiate an export job:
+sail spconfig export
+
+To export specific object types including rules, you can create a template:
+{  "name": "export-rules",  "description": "Export rules and related objects",  "variables": [],  "exportBody": {    "description": "Export rules",    "excludeTypes": [],    "includeTypes": [      "RULE",      "TRANSFORM",      "SOURCE",      "IDENTITY_PROFILE"    ],    "objectOptions": {}  }}
+
+Then run the template:
+sail spconfig template export-rules
+
+**Step 2: Download the Export Results
+
+After the export job completes, download the results using the job ID:
+Linux/Mac:
+sail spconfig download --export {export job ID}
+
+Windows:
+sail spconfig download --export {export job ID}
+
+You can specify where to save the file:
+sail spconfig download --export {export job ID} --folderPath /path/to/save
+
+
+***Option 2: Using the SP-Config API
+**Step 1: Initiate Export
+Make a POST request to the export endpoint:
+POST https://{tenant}.api.identitynow.com/v2024/sp-config/export
+
+Request Body:
+{  "description": "Export rules",  "excludeTypes": [],  "includeTypes": [    "RULE",    "TRANSFORM"  ],  "objectOptions": {}}
+
+**Step 2: Check Export Status
+Use the job ID returned from the export request to check the status.
+
+**Step 3: Download Results
+Once complete, download the JSON configuration file containing your rules.
+
+
+***Supported Object Types for Export
+The SP-Config export supports these object types:
+•	RULE - Cloud-executed rules and connector rules
+•	TRANSFORM - Transform configurations
+•	SOURCE - Source configurations
+•	TRIGGER_SUBSCRIPTION - Event trigger subscriptions
+•	IDENTITY_PROFILE - Identity profile configurations
